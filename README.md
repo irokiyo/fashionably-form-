@@ -26,7 +26,7 @@
     DB_USERNAME=laravel_user 
     DB_PASSWORD=laravel_pass 
 ```
-1. php artisan key:generate  
+5. php artisan key:generate  
 1. php artisan migrate  
 1. php artisan db:seed  
 
@@ -42,5 +42,5 @@
 - phpMyAdmin: http://localhost:8080/  
 
 ## ER 図
-
+![ER図](pigry.drawio.png)
 
