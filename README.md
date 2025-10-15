@@ -42,5 +42,5 @@
 - phpMyAdmin: http://localhost:8080/  
 
 ## ER 図
-![ER図](pigry.drawio.png)
+![ER図](fashionably.drawio.png)
 
