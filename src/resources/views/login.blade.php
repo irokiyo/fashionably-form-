@@ -6,14 +6,15 @@
 @endsection
 
 @section('link')
-    <a href="" class="header__btn">register</a>
+    <a href="{{ route('register') }}" class="header__btn">register</a>
 @endsection
 
 
 @section('content')
     <div class="ttl">Login</div>
     <div class="card">
-        <form action="" method="post" class="form">
+        <form action="{{ route('login') }}"  method="post" class="form">
+        @csrf
             <div class="form-item">
                 <div class="form-item-ttl">メールアドレス</div>
                 <input type="email" class="form__text" name="email" value="{{ old('email') }}" placeholder="例: test@example.com">

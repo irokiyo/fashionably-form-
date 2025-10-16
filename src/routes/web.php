@@ -23,9 +23,6 @@ Route::get('/confirm', [ContactController::class, 'confirm'])->name('confirm'); 
 Route::post('/confirm', [ContactController::class, 'store'])->name('store'); //お問い合わせフォームを登録
 Route::get('/thanks', [ContactController::class, 'thanks'])->name('thanks'); //サンクスページ
 
-Route::get('/login', [ContactController::class, 'login'])->name('login'); //ログインページ
-Route::get('/register', [ContactController::class, 'register'])->name('register');//ユーザ登録ページ
-Route::post('/register', [ContactController::class, 'userStore'])->name('user.store');//ユーザをDBに登録
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [ContactController::class, 'admin'])->name('admin');//管理画面
