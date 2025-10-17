@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    //ログイン画面表示
-    public function login(){
+    //管理画面表示
+    public function admin(){
 
-        return view('login');
+        return view('admin');
     }
 }
