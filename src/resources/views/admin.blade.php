@@ -42,7 +42,7 @@
             <div class="frame">
                 <a href="" class="frame-export">エクスポート</a>
             </div>
-            <div class="pagination">ページネーション</div>
+            <div class="pagination">{{ $contacts->links() }}</div>
             <table class="admin-table">
                 <tr class="table__row-label">
                     <td class="table__label">お名前 </td>
@@ -51,13 +51,23 @@
                     <td class="table__label">お問い合わせの種類</td>
                     <td class="table__label"></td>
                 </tr>
+                @foreach ($contacts as $contact)
                 <tr class="table__row-data">
-                    <td class="table__data">あ</td>
-                    <td class="table__data">い</td>
-                    <td class="table__data">う</td>
-                    <td class="table__data">え</td>
+                    <td class="table__data">{{ $contact->first_name }} {{ $contact->last_name }}</td>
+                    <td class="table__data">
+                    @if($contact->gender==1)
+                    男性
+                    @elseif($contact->gender==2)
+                    女性
+                    @else
+                    その他
+                    @endif
+                    </td>
+                    <td class="table__data">{{ $contact->email }}</td>
+                    <td class="table__data">{{ $contact->category->content }}</td>
                     <td class="table__data"><a href="" class="admin__btn-show">詳細</a></td>
                 </tr>
+                @endforeach
             </table>
         </form>
     </div>
