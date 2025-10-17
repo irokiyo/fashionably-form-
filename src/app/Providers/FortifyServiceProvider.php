@@ -37,9 +37,11 @@ class FortifyServiceProvider extends ServiceProvider
         });
         //ログインビュー
         Fortify::loginView(function (){
+            
             return view('login');
         });
-
+    }
+        
         //RateLimiter::for('login', function (Request $request) {
             //$email = (string) $request->email;
 
@@ -47,4 +49,4 @@ class FortifyServiceProvider extends ServiceProvider
         //});
 
     }
-}
+
