@@ -1,0 +1,30 @@
+/* モーダル */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+.modal:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+/* メイン */
+
+.table__row-label{
+    background-color: #8B7969;
+    display: inline-block;
+}
+.table__label{
+    color: #FFFFFF;
+    font-family: Inika;
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: space-between;
+}

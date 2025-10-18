@@ -66,10 +66,11 @@
                     </td>
                     <td class="table__data">{{ $contact->email }}</td>
                     <td class="table__data">{{ $contact->category->content }}</td>
-                    <td class="table__data"><a href="#modal-edit-{{ $contact->id }}" class="admin__btn-show">詳細</a></td>
+                    <td class="table__data"><a href="#modal-{{ $contact->id }}" class="admin__btn-show">詳細</a></td>
                 </tr>
                     {{-- モーダル--}}
-                    <div id="modal-edit-{{ $contact->id }}" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-{{ $contact->id }}">
+                    <div id="modal-{{ $contact->id }}" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-{{ $contact->id }}">
+                    <a href="#" class="modal__backdrop" aria-label="モーダルを閉じる"></a>
 
                         <div class="panel">
                             <div class="content">
