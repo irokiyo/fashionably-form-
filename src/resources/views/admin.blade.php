@@ -7,8 +7,8 @@
 
 @section('link')
 <form class="form" action="{{ route('logout') }}" method="post">
-@csrf
-<button class="header__btn">logout</button>
+    @csrf
+    <button class="header__btn">logout</button>
 </form>
 @endsection
 
@@ -18,7 +18,7 @@
         <h2 class="admin__ttl-name">Admin</h2>
     </div>
     <div class="search">
-        <form action="get" class="search__form">
+        <form action="" class="search__form" method="get">
             <div class="search__input">
                 <input type="email" class="search__input-email" name="email" placeholder="例: 名前やメールアドレスを入力してください">
                 <select name="gender" id="gender" class="search__input-gender">
@@ -33,7 +33,7 @@
                     <option value="2" name="gender">女性</option>
                     <option value="3" name="gender">その他</option>
                 </select>
-                <input type="date" class="search__input-date" name="date" >
+                <input type="date" class="search__input-date" name="date">
             </div>
             <div class="search__btn">
                 <button type="submit" class="search__btn-search">検索</button>
@@ -56,78 +56,80 @@
                 <tr class="table__row-data">
                     <td class="table__data">{{ $contact->last_name }} {{ $contact->first_name }}</td>
                     <td class="table__data">
-                    @if($contact->gender==1)
-                    男性
-                    @elseif($contact->gender==2)
-                    女性
-                    @else
-                    その他
-                    @endif
+                        @if($contact->gender==1)
+                        男性
+                        @elseif($contact->gender==2)
+                        女性
+                        @else
+                        その他
+                        @endif
                     </td>
                     <td class="table__data">{{ $contact->email }}</td>
                     <td class="table__data">{{ $contact->category->content }}</td>
                     <td class="table__data"><a href="#modal-{{ $contact->id }}" class="admin__btn-show">詳細</a></td>
                 </tr>
-                    {{-- モーダル--}}
-                    <div id="modal-{{ $contact->id }}" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-{{ $contact->id }}">
-                    <a href="#" class="modal__backdrop" aria-label="モーダルを閉じる"></a>
-
-                        <div class="panel">
-                            <div class="content">
-                                <form action="" class="modal__form" method="post" >
-                                @csrf
-                                @method('DELETE')
-                                    <div class="detail__group">
-                                        <label class="label">お名前</label>
-                                        <p class="detail">{{ $contact->last_name }} {{ $contact->first_name }}</p>
-                                    </div>
-                                    <div class="detail__group">
-                                        <label class="label">性別</label>
-                                        <p class="detail">
-                                        @if($contact->gender==1)
-                                        男性
-                                        @elseif($contact->gender==2)
-                                        女性
-                                        @else
-                                        その他
-                                        @endif
-                                        </p>
-                                    </div>
-                                    <div class="detail__group">
-                                        <label class="label">メールアドレス</label>
-                                        <p class="detail">{{ $contact->email }}</p>
-                                    </div>
-                                    <div class="detail__group">
-                                        <label class="label">電話番号</label>
-                                        <p class="detail">{{ $contact->tel1 }}{{ $contact->tel2 }}{{ $contact->tel3 }}</p>
-                                    </div>
-                                    <div class="detail__group">
-                                        <label class="label">住所</label>
-                                        <p class="detail">{{ $contact->address }}</p>
-                                    </div>
-                                    <div class="detail__group">
-                                        <label class="label">建物名</label>
-                                        <p class="detail">{{ $contact->building }}</p>
-                                    </div>
-                                    <div class="detail__group">
-                                        <label class="label">お問い合わせの種類</label>
-                                        <p class="detail">{{ $contact->category->content }}</p>
-                                    </div>
-                                    <div class="detail__group">
-                                        <label class="label">お問い合わせ内容</label>
-                                        <p class="detail">{{ $contact->detail }}</p>
-                                    </div>
-                                    <div class="form__btn">
-                                        <button type="submit" class="btn__delete">削除</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                @endforeach
             </table>
         </form>
+        {{-- モーダル--}}
+        @foreach ($contacts as $contact)
+        <div id="modal-{{ $contact->id }}" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-{{ $contact->id }}">
+            <a href="#" class="modal__backdrop" aria-label="モーダルを閉じる"></a>
+
+            <div class="panel">
+                <div class="content">
+                    <form action="" class="modal__form" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <div class="detail__group">
+                            <label class="label">お名前</label>
+                            <p class="detail">{{ $contact->last_name }} {{ $contact->first_name }}</p>
+                        </div>
+                        <div class="detail__group">
+                            <label class="label">性別</label>
+                            <p class="detail">
+                                @if($contact->gender==1)
+                                男性
+                                @elseif($contact->gender==2)
+                                女性
+                                @else
+                                その他
+                                @endif
+                            </p>
+                        </div>
+                        <div class="detail__group">
+                            <label class="label">メールアドレス</label>
+                            <p class="detail">{{ $contact->email }}</p>
+                        </div>
+                        <div class="detail__group">
+                            <label class="label">電話番号</label>
+                            <p class="detail">{{ $contact->tel1 }}{{ $contact->tel2 }}{{ $contact->tel3 }}</p>
+                        </div>
+                        <div class="detail__group">
+                            <label class="label">住所</label>
+                            <p class="detail">{{ $contact->address }}</p>
+                        </div>
+                        <div class="detail__group">
+                            <label class="label">建物名</label>
+                            <p class="detail">{{ $contact->building }}</p>
+                        </div>
+                        <div class="detail__group">
+                            <label class="label">お問い合わせの種類</label>
+                            <p class="detail">{{ $contact->category->content }}</p>
+                        </div>
+                        <div class="detail__group">
+                            <label class="label">お問い合わせ内容</label>
+                            <p class="detail">{{ $contact->detail }}</p>
+                        </div>
+                        <div class="form__btn">
+                            <button type="submit" class="btn__delete">削除</button>
+                        </div>
+                    </form>
+                </div>
+                <a href="#" class="modal__close-btn">×</a>
+            </div>
+        </div>
         @endforeach
     </div>
-</div>
-@endsection
+    @endsection
 

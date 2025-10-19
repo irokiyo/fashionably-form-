@@ -15,11 +15,36 @@
     opacity: 1;
     pointer-events: auto;
 }
+.panel{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #8B7969;
+    box-shadow: 4px 4px 4px;
+    background-color: #FFFFFF;
+}
+.detail__group{
+    display: flex;
+}
 /* メイン */
+.admin__ttl{
+    text-align: center;
+    justify-content: center;
+}
+.admin__ttl-name{
+    font-family: Inika;
+    font-size: 35px;
+    color: #8B7969;
+}
+.admin-table{
+    border: 1px solid ;
+    width: 100%;
+}
 
 .table__row-label{
     background-color: #8B7969;
-    display: inline-block;
+    width: 100%;
 }
 .table__label{
     color: #FFFFFF;
@@ -27,4 +52,12 @@
     font-weight: bold;
     font-size: 20px;
     justify-content: space-between;
+}
+.table__row-data{
+
+}
+.table__data{
+    font-family: Inika;
+    font-size: 20px;
+    color: #8B7969;
 }
