@@ -15,17 +15,26 @@
     opacity: 1;
     pointer-events: auto;
 }
+
 .panel{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid #8B7969;
-    box-shadow: 4px 4px 4px;
+    box-shadow: 4px 4px 4px #8B7969;
     background-color: #FFFFFF;
+}
+.content{
+    margin: 100px;
+    text-align: center;
+    justify-content: center;
+    position: relative;
 }
 .detail__group{
     display: flex;
+    align-items: flex-start;
+    margin: 0  0 20px 0;
 }
 /* メイン */
 .admin__ttl{
@@ -40,6 +49,7 @@
 .admin-table{
     border: 1px solid ;
     width: 100%;
+    max-width: 100%
 }
 
 .table__row-label{
@@ -60,4 +70,39 @@
     font-family: Inika;
     font-size: 20px;
     color: #8B7969;
+}
+.label{
+    font-family: Inika;
+    font-size: 20px;
+    color: #8B7969;
+    display: inline-block;
+    white-space: nowrap;
+    margin: 0 30px 0 0;
+    width: 180px;
+    text-align: left;
+}
+.detail{
+    font-family: Inika;
+    font-size: 20px;
+    color: #8B7969;
+    display: inline-block;
+    margin: 0;
+}
+.btn__delete{
+    padding: 8px 20px;
+    background-color: #BA370D;
+    border: none;
+    color: #FFFFFF;
+    font-family: Inika;
+}
+.modal__close-btn{
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 32px;
+    text-decoration: none;
+    border: 1px solid #8B7969;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
 }
