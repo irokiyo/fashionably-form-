@@ -41,4 +41,18 @@ class Contact extends Model
         };
         return $query;
     }
+    //性別
+    public function scopeGenderSearch($query,$gender){
+        if (!empty($gender)) {
+        $query->where('gender', $gender);
+        }
+        return $query;
+    }
+    //カテゴリ検索
+    public function scopeCategorySearch($query,$category_id){
+        if (!empty($category_id)){
+        $query->where('category_id', $category_id);
+        };
+        return $query;
+    }
 }

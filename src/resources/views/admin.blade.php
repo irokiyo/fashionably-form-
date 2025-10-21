@@ -21,17 +21,17 @@
         <form action="{{ route('search') }}" class="search__form" method="get">
             <div class="search__input">
                 <input type="text" class="search__input-text" name="keyword" value="{{ old('keyword') }}" placeholder="例: 名前やメールアドレスを入力してください">
-                <select name="gender" id="gender" class="search__input-gender">
-                    <option value="">性別</option>
+                <select name="gender" id="gender" class="search__input-gender" value="{{ old('gender') }}">
+                    <option value="" disabled selected>性別</option>
                     <option value="1" name="gender">男性</option>
                     <option value="2" name="gender">女性</option>
                     <option value="3" name="gender">その他</option>
                 </select>
-                <select name="category" id="category" class="search__input-category">
-                    <option value="">お問い合わせの種類</option>
-                    <option value="1" name="gender">男性</option>
-                    <option value="2" name="gender">女性</option>
-                    <option value="3" name="gender">その他</option>
+                <select name="category_id" id="category" class="search__input-category" value="{{ old('category_id') }}">
+                    <option value="" disabled selected>お問い合わせの種類</option>
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" name="category_id" @if (old('category_id')==$category->id) selected @endif>{{ $category->content }}</option>
+                    @endforeach
                 </select>
                 <input type="date" class="search__input-date" name="date">
             </div>
