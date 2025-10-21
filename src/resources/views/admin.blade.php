@@ -18,9 +18,9 @@
         <h2 class="admin__ttl-name">Admin</h2>
     </div>
     <div class="search">
-        <form action="" class="search__form" method="get">
+        <form action="{{ route('search') }}" class="search__form" method="get">
             <div class="search__input">
-                <input type="email" class="search__input-email" name="email" placeholder="例: 名前やメールアドレスを入力してください">
+                <input type="text" class="search__input-text" name="keyword" value="{{ old('keyword') }}" placeholder="例: 名前やメールアドレスを入力してください">
                 <select name="gender" id="gender" class="search__input-gender">
                     <option value="">性別</option>
                     <option value="1" name="gender">男性</option>
@@ -42,7 +42,7 @@
             <div class="frame">
                 <a href="" class="frame-export">エクスポート</a>
             </div>
-            <div class="pagination">{{ $contacts->links('vendor.pagination.bootstrap-4') }}</div>
+            <div class="pagination">{{ $contacts->appends(request()->query())->links('vendor.pagination.bootstrap-4') }}</div>
 
             <table class="admin-table">
                 <tr class="table__row-label">

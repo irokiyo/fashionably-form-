@@ -15,4 +15,13 @@ class ContactController extends Controller
 
         return view('admin',compact('contacts', 'categories'));
     }
+    public function search(Request $request){
+        if ($request->has('reset')) {
+            return redirect()->route('admin');}
+
+        $contacts = contact::with('category')->contactSearch($request->contact_id)->keywordSearch($request->keyword)->paginate(7)->withQueryString();;
+        $categories = Category::all();
+
+        return view('admin', compact('contacts', 'categories'));
+    }
 }

@@ -26,4 +26,19 @@ class Contact extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+    //スコープの定義
+    public function scopeContactSearch($query, $contact_id){
+        if (!empty($contact_id)) {
+        $query->where('contact_id', $contact_id);
+        }
+    }
+    //キーワード検索
+    public function scopeKeywordSearch($query ,$keyword){
+        if (!empty($keyword)) {
+        $query->where('last_name', 'like', "%{$keyword}%")
+            ->orWhere('first_name', 'like', "%{$keyword}%")
+            ->orWhere('email', 'like', "%{$keyword}%");
+        };
+        return $query;
+    }
 }

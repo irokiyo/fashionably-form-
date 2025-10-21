@@ -26,5 +26,7 @@ Route::get('/thanks', [ContactController::class, 'thanks'])->name('thanks'); //�
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [ContactController::class, 'admin'])->name('admin');//管理画面
+    Route::get('/search', [ContactController::class, 'search'])->name('search');//検索
+    Route::post('/delete', [ContactController::class, '/delete'])->name('/delete');//削除
     });
 
