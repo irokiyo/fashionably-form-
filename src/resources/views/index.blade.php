@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/contact.css')}}">
+<link rel="stylesheet" href="{{ asset('css/index.css')}}">
 @endsection
 
 @section('content')
 <div class="contact-form">
     <h2 class="contact-form__heading content__heading">Contact</h2>
     <div class="contact-form__inner">
-        <form action="confirm" method="post">
+        <form action="{{route('confirm')}}" method="post">
             @csrf
             <div class="contact-form__group contact-form__name-group">
                 <label class="contact-form__label" for="name">

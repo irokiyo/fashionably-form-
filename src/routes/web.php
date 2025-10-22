@@ -19,8 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/', [ContactController::class, 'index'])->name('index'); //お問い合わせフォーム入力ページ
-Route::get('/confirm', [ContactController::class, 'confirm'])->name('confirm'); //お問い合わせフォーム確認ページ
-Route::post('/confirm', [ContactController::class, 'store'])->name('store'); //お問い合わせフォームを登録
+Route::post('/confirm', [ContactController::class, 'confirm'])->name('confirm'); //お問い合わせフォーム確認ページ
+Route::post('/store', [ContactController::class, 'store'])->name('store'); //お問い合わせフォームを登録
 Route::get('/thanks', [ContactController::class, 'thanks'])->name('thanks'); //サンクスページ
 
 
