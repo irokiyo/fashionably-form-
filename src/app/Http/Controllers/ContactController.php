@@ -24,4 +24,11 @@ class ContactController extends Controller
 
         return view('admin', compact('contacts', 'categories'));
     }
+    //削除
+    public function delete(Request $request){
+        $contact = Contact::findOrFail($request->id);
+        $contact->delete();
+
+        return redirect()->route('admin');
+    }
 }

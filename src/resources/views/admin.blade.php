@@ -39,11 +39,11 @@
                 <button type="submit" class="search__btn-search">検索</button>
                 <a href="{{ route('admin') }}" class="search__btn-reset">リセット</a>
             </div>
+            </form>
             <div class="frame">
                 <a href="" class="frame-export">エクスポート</a>
             </div>
             <div class="pagination">{{ $contacts->appends(request()->query())->links('vendor.pagination.bootstrap-4') }}</div>
-
             <table class="admin-table">
                 <tr class="table__row-label">
                     <td class="table__label">お名前 </td>
@@ -70,7 +70,6 @@
                 </tr>
                 @endforeach
             </table>
-        </form>
         {{-- モーダル--}}
         @foreach ($contacts as $contact)
         <div id="modal-{{ $contact->id }}" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-{{ $contact->id }}">
@@ -78,50 +77,50 @@
 
             <div class="panel">
                 <div class="content">
-                    <form action="" class="modal__form" method="post">
+                    <div class="detail__group">
+                        <label class="label">お名前</label>
+                        <p class="detail">{{ $contact->last_name }} {{ $contact->first_name }}</p>
+                    </div>
+                    <div class="detail__group">
+                        <label class="label">性別</label>
+                        <p class="detail">
+                            @if($contact->gender==1)
+                            男性
+                            @elseif($contact->gender==2)
+                            女性
+                            @else
+                            その他
+                            @endif
+                        </p>
+                    </div>
+                    <div class="detail__group">
+                        <label class="label">メールアドレス</label>
+                        <p class="detail">{{ $contact->email }}</p>
+                    </div>
+                    <div class="detail__group">
+                        <label class="label">電話番号</label>
+                        <p class="detail">{{ $contact->tel1 }}{{ $contact->tel2 }}{{ $contact->tel3 }}</p>
+                    </div>
+                    <div class="detail__group">
+                        <label class="label">住所</label>
+                        <p class="detail">{{ $contact->address }}</p>
+                    </div>
+                    <div class="detail__group">
+                        <label class="label">建物名</label>
+                        <p class="detail">{{ $contact->building }}</p>
+                    </div>
+                    <div class="detail__group">
+                        <label class="label">お問い合わせの種類</label>
+                        <p class="detail">{{ $contact->category->content }}</p>
+                    </div>
+                    <div class="detail__group">
+                        <label class="label">お問い合わせ内容</label>
+                        <p class="detail">{{ $contact->detail }}</p>
+                    </div>
+                    <form action="{{route('delete')}}" class="modal__form" method="post">
                         @csrf
-                        @method('DELETE')
-                        <div class="detail__group">
-                            <label class="label">お名前</label>
-                            <p class="detail">{{ $contact->last_name }} {{ $contact->first_name }}</p>
-                        </div>
-                        <div class="detail__group">
-                            <label class="label">性別</label>
-                            <p class="detail">
-                                @if($contact->gender==1)
-                                男性
-                                @elseif($contact->gender==2)
-                                女性
-                                @else
-                                その他
-                                @endif
-                            </p>
-                        </div>
-                        <div class="detail__group">
-                            <label class="label">メールアドレス</label>
-                            <p class="detail">{{ $contact->email }}</p>
-                        </div>
-                        <div class="detail__group">
-                            <label class="label">電話番号</label>
-                            <p class="detail">{{ $contact->tel1 }}{{ $contact->tel2 }}{{ $contact->tel3 }}</p>
-                        </div>
-                        <div class="detail__group">
-                            <label class="label">住所</label>
-                            <p class="detail">{{ $contact->address }}</p>
-                        </div>
-                        <div class="detail__group">
-                            <label class="label">建物名</label>
-                            <p class="detail">{{ $contact->building }}</p>
-                        </div>
-                        <div class="detail__group">
-                            <label class="label">お問い合わせの種類</label>
-                            <p class="detail">{{ $contact->category->content }}</p>
-                        </div>
-                        <div class="detail__group">
-                            <label class="label">お問い合わせ内容</label>
-                            <p class="detail">{{ $contact->detail }}</p>
-                        </div>
                         <div class="form__btn">
+                            <input type="hidden" name="id" value="{{ $contact->id }}">
                             <button type="submit" class="btn__delete">削除</button>
                         </div>
                     </form>
