@@ -31,4 +31,12 @@ class ContactController extends Controller
 
         return redirect()->route('admin');
     }
+    //問い合わせフォーム
+    public function index(Request $request){
+        $categories=Category::all();
+
+        return view('index',compact('categories'));
+    }
+    
+
 }
