@@ -52,7 +52,14 @@ class Contact extends Model
     public function scopeCategorySearch($query,$category_id){
         if (!empty($category_id)){
         $query->where('category_id', $category_id);
-        };
+        }
+        return $query;
+    }
+    //作成日検索
+    public function scopeCreatedOn($query, $date){
+        if (!empty($date)){
+        $query->whereDate('created_at', $date);
+        }
         return $query;
     }
 }

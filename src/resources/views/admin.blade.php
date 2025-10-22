@@ -20,8 +20,8 @@
     <div class="search">
         <form action="{{ route('search') }}" class="search__form" method="get">
             <div class="search__input">
-                <input type="text" class="search__input-text" name="keyword" value="{{ old('keyword') }}" placeholder="例: 名前やメールアドレスを入力してください">
-                <select name="gender" id="gender" class="search__input-gender" value="{{ old('gender') }}">
+                <input type="text" class="search__input-text" name="keyword" value="{{ request('keyword') }}" placeholder="例: 名前やメールアドレスを入力してください">
+                <select name="gender" id="gender" class="search__input-gender" value="{{ request('gender') }}">
                     <option value="" disabled selected>性別</option>
                     <option value="1" name="gender">男性</option>
                     <option value="2" name="gender">女性</option>
@@ -33,7 +33,7 @@
                     <option value="{{ $category->id }}" name="category_id" @if (old('category_id')==$category->id) selected @endif>{{ $category->content }}</option>
                     @endforeach
                 </select>
-                <input type="date" class="search__input-date" name="date">
+                <input type="date" class="search__input-date" name="date" value="{{ request('gender') }}">
             </div>
             <div class="search__btn">
                 <button type="submit" class="search__btn-search">検索</button>
