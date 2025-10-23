@@ -8,7 +8,7 @@
 <div class="confirm-form">
     <h2 class="confirm-form__heading content__heading">Confirm</h2>
     <div class="confirm-form__inner">
-        <form action="/thanks" method="post">
+        <form action="{{route('store')}}" method="post">
             @csrf
             <table class="confirm-form__table">
                 <tr class="confirm-form__row">
@@ -37,10 +37,10 @@
                 </tr>
                 <tr class="confirm-form__row">
                     <th class="confirm-form__label">電話番号</th>
-                    <td class="confirm-form__data">{{ $contacts['tel_1'] }}{{ $contacts['tel_2'] }}{{ $contacts['tel_3'] }}</td>
-                    <input type="hidden" name="tel_1" value="{{ $contacts['tel_1'] }}">
-                    <input type="hidden" name="tel_2" value="{{ $contacts['tel_2'] }}">
-                    <input type="hidden" name="tel_3" value="{{ $contacts['tel_3'] }}">
+                    <td class="confirm-form__data">{{ $contacts['tel1'] }}{{ $contacts['tel2'] }}{{ $contacts['tel3'] }}</td>
+                    <input type="hidden" name="tel1" value="{{ $contacts['tel1'] }}">
+                    <input type="hidden" name="tel2" value="{{ $contacts['tel2'] }}">
+                    <input type="hidden" name="tel3" value="{{ $contacts['tel3'] }}">
                 </tr>
                 <tr class="confirm-form__row">
                     <th class="confirm-form__label">住所</th>

@@ -45,5 +45,18 @@ class ContactController extends Controller
         return view('confirm',compact('contacts','category'));
 
     }
+    //データ登録
+    public function store(Request $request){
+        $contacts=$request->all();
+
+        Contact::create($contacts);
+
+        return redirect()->route('thanks');
+    }
+    //登録完了画面
+    public function thanks(){
+        return view('thanks');
+
+    }
 
 }

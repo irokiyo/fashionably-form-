@@ -79,19 +79,19 @@
                     電話番号<span class="contact-form__required">※</span>
                 </label>
                 <div class="contact-form__tel-inputs">
-                    <input class="contact-form__input contact-form__tel-input" type="tel" name="tel_1" id="tel" value="{{ old('tel_1') }}">
+                    <input class="contact-form__input contact-form__tel-input" type="tel" name="tel1" id="tel" value="{{ old('tel1') }}">
                     <span>-</span>
-                    <input class="contact-form__input contact-form__tel-input" type="tel" name="tel_2" value="{{ old('tel_2') }}">
+                    <input class="contact-form__input contact-form__tel-input" type="tel" name="tel2" value="{{ old('tel2') }}">
                     <span>-</span>
-                    <input class="contact-form__input contact-form__tel-input" type="tel" name="tel_3" value="{{ old('tel_3') }}">
+                    <input class="contact-form__input contact-form__tel-input" type="tel" name="tel3" value="{{ old('tel3') }}">
                 </div>
                 <p class="contact-form__error-message">
-                    @if ($errors->has('tel_1'))
-                    {{$errors->first('tel_1')}}
-                    @elseif ($errors->has('tel_2'))
-                    {{$errors->first('tel_2')}}
+                    @if ($errors->has('tel1'))
+                    {{$errors->first('tel1')}}
+                    @elseif ($errors->has('tel2'))
+                    {{$errors->first('tel2')}}
                     @else
-                    {{$errors->first('tel_3')}}
+                    {{$errors->first('tel3')}}
                     @endif
                 </p>
             </div>
