@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
 @endsection
 
@@ -18,10 +18,16 @@
             <div class="form-item">
                 <div class="form-item-ttl">メールアドレス</div>
                 <input type="email" class="form__text" name="email" value="{{ old('email') }}" placeholder="例: test@example.com">
+                @if ($errors->has('email'))
+                     <div class="form__error">{{ $errors->first('email') }}</div>
+                @endif
             </div>
             <div class="form-item">
                 <div class="form-item-ttl">パスワード</div>
                 <input type="password" class="form__text" name="password" value="{{ old('password') }}" placeholder="例: coachtech1106">
+                @if ($errors->has('password'))
+                <div class="form__error">{{ $errors->first('password') }}</div>
+                @endif
             </div>
             <div class="form__btn">
                 <button type="submit" class="btn-submit">ログイン</button>

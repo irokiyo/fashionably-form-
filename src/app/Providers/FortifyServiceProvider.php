@@ -8,10 +8,14 @@ use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -40,6 +44,12 @@ class FortifyServiceProvider extends ServiceProvider
             
             return view('login');
         });
+        RateLimiter::for('login', function (Request $request) {
+            $email = (string) $request->email;
+
+            return Limit::perMinute(10)->by($email . $request->ip());
+        });
+        $this->app->bind(FortifyLoginRequest::class, LoginRequest::class);
     }
         
         //RateLimiter::for('login', function (Request $request) {
